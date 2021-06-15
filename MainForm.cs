@@ -98,11 +98,12 @@ namespace mute
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            foreach (string id in Properties.Settings.Default.Guids)
-            {
-                Guid realId = Guid.Parse(id);
-                _selectedGuids.Add(realId);
-            }
+            if (Properties.Settings.Default.Guids != null)
+                foreach (string id in Properties.Settings.Default.Guids)
+                {
+                    Guid realId = Guid.Parse(id);
+                    _selectedGuids.Add(realId);
+                }
 
             boxHotkey.Text = Properties.Settings.Default.Hotkey;
             ParseKeys(boxHotkey.Text);
